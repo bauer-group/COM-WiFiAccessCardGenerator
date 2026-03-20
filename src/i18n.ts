@@ -11,6 +11,7 @@ i18n
     fallbackLng: 'en',
     supportedLngs: ['en', 'de', 'fr', 'es', 'it', 'pt', 'tr', 'pl', 'ru', 'ar', 'zh', 'ja', 'ko', 'ka', 'th', 'vi'],
     interpolation: { escapeValue: false },
+    showSupportNotice: false,
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
