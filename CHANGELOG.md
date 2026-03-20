@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.2.0...v0.3.0) (2026-03-20)
+
+### 🚀 Features
+
+* **print:** added persistent print settings to preferences ([b34ca68](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/b34ca68134b792c9c98f5496cfacdc00878b2b82))
+
 ## [0.2.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.1.1...v0.2.0) (2026-03-20)
 
 ### 🚀 Features

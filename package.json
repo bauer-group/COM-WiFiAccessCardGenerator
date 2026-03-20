@@ -1,6 +1,6 @@
 {
   "name": "@bauer-group/wifi-access-card-generator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "description": "Generate WiFi access cards with QR codes - manage, print, and share wireless network access information",
