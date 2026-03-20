@@ -45,6 +45,8 @@
     "locationPlaceholder": "p. ex. Etage 2, Salle de conference",
     "notes": "Notes",
     "notesPlaceholder": "Informations supplementaires...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Ajouter des tags (ex. Bâtiment, Étage, Invité)...",
     "passwordTooShort": "Le mot de passe doit comporter au moins {{min}} caracteres (norme WPA)",
     "passwordTooLong": "Le mot de passe doit comporter au maximum {{max}} caracteres (norme WPA)",
     "passwordHint": "{{min}}–{{max}} caracteres requis par la norme WPA",
@@ -105,6 +107,9 @@
     "password": "Mot de passe de chiffrement",
     "passwordPlaceholder": "Saisissez un mot de passe fort",
     "generate": "Generer le lien",
+    "urlTooLong": "Le lien peut être trop long pour certains navigateurs",
+    "urlTooLongHint": "{{length}} caractères (max recommandé : {{max}}). Partagez moins de réseaux ou utilisez la fonction d'export.",
+    "characters": "caractères",
     "close": "Fermer"
   },
   "import": {
@@ -162,5 +167,13 @@
     "no": "Non",
     "or": "ou",
     "optional": "facultatif"
+  },
+  "tags": {
+    "title": "Tags",
+    "all": "Tous",
+    "ungrouped": "Sans groupe",
+    "filterByTag": "Filtrer par tag",
+    "printGroup": "Imprimer ce groupe",
+    "shareGroup": "Partager ce groupe"
   }
 }

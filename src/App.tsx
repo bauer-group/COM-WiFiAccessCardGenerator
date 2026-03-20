@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus, Settings, Wifi, Search, Share2, Printer, X } from 'lucide-react';
+import { Plus, Settings, Wifi, Search, Share2, Printer, X, ChevronRight, Tag } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -84,13 +85,62 @@ export default function App() {
     setShareNetworks([network]);
   }, []);
 
-  const filteredNetworks = searchQuery
-    ? networks.filter((n) =>
-        n.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        n.ssid.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (n.location?.toLowerCase().includes(searchQuery.toLowerCase())),
-      )
-    : networks;
+  // Tag filter
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set());
+
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    for (const n of networks) {
+      if (n.tags) for (const t of n.tags) tagSet.add(t);
+    }
+    return Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+  }, [networks]);
+
+  const filteredNetworks = useMemo(() => {
+    let result = networks;
+    if (selectedTag) {
+      result = result.filter((n) => n.tags?.includes(selectedTag));
+    }
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter((n) =>
+        n.name.toLowerCase().includes(q) ||
+        n.ssid.toLowerCase().includes(q) ||
+        n.location?.toLowerCase().includes(q) ||
+        n.tags?.some((t) => t.toLowerCase().includes(q)),
+      );
+    }
+    return result;
+  }, [networks, selectedTag, searchQuery]);
+
+  const hasTags = allTags.length > 0;
+  const UNGROUPED = '__ungrouped__';
+
+  const groupedNetworks = useMemo(() => {
+    if (!hasTags) return null;
+    const groups = new Map<string, WifiNetwork[]>();
+    for (const network of filteredNetworks) {
+      if (!network.tags || network.tags.length === 0) {
+        if (!groups.has(UNGROUPED)) groups.set(UNGROUPED, []);
+        groups.get(UNGROUPED)!.push(network);
+      } else {
+        for (const tag of network.tags) {
+          if (!groups.has(tag)) groups.set(tag, []);
+          groups.get(tag)!.push(network);
+        }
+      }
+    }
+    return groups;
+  }, [hasTags, filteredNetworks]);
+
+  const toggleGroup = useCallback((key: string) => {
+    setCollapsedGroups((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+  }, []);
 
   return (
     <TooltipProvider>
@@ -177,6 +227,36 @@ export default function App() {
                 </div>
               </div>
 
+              {/* Tag filter bar */}
+              {hasTags && (
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Tag className="h-3.5 w-3.5 text-[var(--muted-foreground)]" />
+                  <button
+                    onClick={() => setSelectedTag(null)}
+                    className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+                      !selectedTag
+                        ? 'bg-[var(--primary)] text-white border-[var(--primary)]'
+                        : 'border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--primary)]'
+                    }`}
+                  >
+                    {t('tags.all')}
+                  </button>
+                  {allTags.map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+                      className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+                        selectedTag === tag
+                          ? 'bg-[var(--primary)] text-white border-[var(--primary)]'
+                          : 'border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--primary)]'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {/* Network list */}
               {filteredNetworks.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -190,7 +270,64 @@ export default function App() {
                     {t('networks.add')}
                   </Button>
                 </div>
+              ) : groupedNetworks ? (
+                /* Grouped view — when any network has tags */
+                <div className="space-y-3">
+                  {Array.from(groupedNetworks.entries()).map(([groupKey, groupNets]) => {
+                    const isCollapsed = collapsedGroups.has(groupKey);
+                    const label = groupKey === UNGROUPED ? t('tags.ungrouped') : groupKey;
+
+                    return (
+                      <div key={groupKey}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <button
+                            onClick={() => toggleGroup(groupKey)}
+                            className="flex items-center gap-1.5 text-sm font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                          >
+                            <ChevronRight className={`h-4 w-4 transition-transform ${!isCollapsed ? 'rotate-90' : ''}`} />
+                            <span>{label}</span>
+                          </button>
+                          <Badge variant="secondary" className="text-[10px]">{groupNets.length}</Badge>
+                          <div className="flex-1" />
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-6 px-2 text-xs text-[var(--muted-foreground)]"
+                            onClick={() => setPrintNetworks(groupNets)}
+                            title={t('tags.printGroup')}
+                          >
+                            <Printer className="h-3 w-3" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-6 px-2 text-xs text-[var(--muted-foreground)]"
+                            onClick={() => setShareNetworks(groupNets)}
+                            title={t('tags.shareGroup')}
+                          >
+                            <Share2 className="h-3 w-3" />
+                          </Button>
+                        </div>
+                        {!isCollapsed && (
+                          <div className="grid gap-4 ml-6">
+                            {groupNets.map((network) => (
+                              <NetworkCard
+                                key={network.id}
+                                network={network}
+                                onEdit={handleEdit}
+                                onDelete={setDeleteTarget}
+                                onPrint={handlePrint}
+                                onShare={handleShare}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               ) : (
+                /* Flat view — when no network has tags */
                 <div className="grid gap-4">
                   {filteredNetworks.map((network) => (
                     <NetworkCard

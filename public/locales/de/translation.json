@@ -45,6 +45,8 @@
     "locationPlaceholder": "z.B. Etage 2, Konferenzraum",
     "notes": "Notizen",
     "notesPlaceholder": "Zusätzliche Informationen...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Tags hinzufügen (z.B. Gebäude, Etage, Gast)...",
     "passwordTooShort": "Passwort muss mindestens {{min}} Zeichen lang sein (WPA-Standard)",
     "passwordTooLong": "Passwort darf maximal {{max}} Zeichen lang sein (WPA-Standard)",
     "passwordHint": "{{min}}–{{max}} Zeichen erforderlich (WPA-Standard)",
@@ -165,5 +167,13 @@
     "no": "Nein",
     "or": "oder",
     "optional": "optional"
+  },
+  "tags": {
+    "title": "Tags",
+    "all": "Alle",
+    "ungrouped": "Ohne Gruppe",
+    "filterByTag": "Nach Tag filtern",
+    "printGroup": "Diese Gruppe drucken",
+    "shareGroup": "Diese Gruppe teilen"
   }
 }

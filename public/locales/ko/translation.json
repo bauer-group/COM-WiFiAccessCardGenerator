@@ -45,6 +45,8 @@
     "locationPlaceholder": "예: 2층, 회의실",
     "notes": "메모",
     "notesPlaceholder": "추가 정보...",
+    "tags": "태그",
+    "tagsPlaceholder": "태그 추가 (예: 건물, 층, 게스트)...",
     "passwordTooShort": "비밀번호는 최소 {{min}}자 이상이어야 합니다 (WPA 표준)",
     "passwordTooLong": "비밀번호는 최대 {{max}}자까지 가능합니다 (WPA 표준)",
     "passwordHint": "WPA 표준에 따라 {{min}}~{{max}}자 필요",
@@ -105,7 +107,10 @@
     "password": "암호화 비밀번호",
     "passwordPlaceholder": "강력한 비밀번호 입력",
     "generate": "링크 생성",
-    "close": "닫기"
+    "close": "닫기",
+    "urlTooLong": "일부 브라우저에서 링크가 너무 길 수 있습니다",
+    "urlTooLongHint": "{{length}}자 (권장 최대: {{max}}). 더 적은 네트워크를 공유하거나 내보내기 기능을 사용하세요.",
+    "characters": "자"
   },
   "import": {
     "title": "WiFi 자격 증명 가져오기",
@@ -162,5 +167,13 @@
     "no": "아니오",
     "or": "또는",
     "optional": "선택 사항"
+  },
+  "tags": {
+    "title": "태그",
+    "all": "전체",
+    "ungrouped": "그룹 없음",
+    "filterByTag": "태그로 필터",
+    "printGroup": "이 그룹 인쇄",
+    "shareGroup": "이 그룹 공유"
   }
 }

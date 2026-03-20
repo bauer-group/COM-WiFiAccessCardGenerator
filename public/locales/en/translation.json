@@ -45,6 +45,8 @@
     "locationPlaceholder": "e.g. Floor 2, Conference Room",
     "notes": "Notes",
     "notesPlaceholder": "Additional information...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Add tags (e.g. Building, Floor, Guest)...",
     "passwordTooShort": "Password must be at least {{min}} characters (WPA standard)",
     "passwordTooLong": "Password must be at most {{max}} characters (WPA standard)",
     "passwordHint": "{{min}}–{{max}} characters required by WPA standard",
@@ -165,5 +167,13 @@
     "no": "No",
     "or": "or",
     "optional": "optional"
+  },
+  "tags": {
+    "title": "Tags",
+    "all": "All",
+    "ungrouped": "Ungrouped",
+    "filterByTag": "Filter by Tag",
+    "printGroup": "Print this group",
+    "shareGroup": "Share this group"
   }
 }

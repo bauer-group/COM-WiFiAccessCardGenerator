@@ -45,6 +45,8 @@
     "locationPlaceholder": "es. Piano 2, Sala conferenze",
     "notes": "Note",
     "notesPlaceholder": "Informazioni aggiuntive...",
+    "tags": "Tag",
+    "tagsPlaceholder": "Aggiungi tag (es. Edificio, Piano, Ospite)...",
     "passwordTooShort": "La password deve contenere almeno {{min}} caratteri (standard WPA)",
     "passwordTooLong": "La password deve contenere al massimo {{max}} caratteri (standard WPA)",
     "passwordHint": "{{min}}–{{max}} caratteri richiesti dallo standard WPA",
@@ -105,7 +107,10 @@
     "password": "Password di cifratura",
     "passwordPlaceholder": "Inserisci una password sicura",
     "generate": "Genera link",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "urlTooLong": "Il link potrebbe essere troppo lungo per alcuni browser",
+    "urlTooLongHint": "{{length}} caratteri (max consigliato: {{max}}). Condividi meno reti o usa la funzione di esportazione.",
+    "characters": "caratteri"
   },
   "import": {
     "title": "Importa credenziali WiFi",
@@ -162,5 +167,13 @@
     "no": "No",
     "or": "o",
     "optional": "facoltativo"
+  },
+  "tags": {
+    "title": "Tag",
+    "all": "Tutti",
+    "ungrouped": "Senza gruppo",
+    "filterByTag": "Filtra per tag",
+    "printGroup": "Stampa questo gruppo",
+    "shareGroup": "Condividi questo gruppo"
   }
 }

@@ -23,6 +23,7 @@ export interface WifiNetwork {
   name: string;
   location?: string;
   notes?: string;
+  tags?: string[];
   createdAt: string;
   updatedAt: string;
 }

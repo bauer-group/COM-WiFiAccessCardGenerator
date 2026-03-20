@@ -45,6 +45,8 @@
     "locationPlaceholder": "p. ej. Planta 2, Sala de conferencias",
     "notes": "Notas",
     "notesPlaceholder": "Informacion adicional...",
+    "tags": "Etiquetas",
+    "tagsPlaceholder": "Añadir etiquetas (ej. Edificio, Planta, Invitado)...",
     "passwordTooShort": "La contrasena debe tener al menos {{min}} caracteres (estandar WPA)",
     "passwordTooLong": "La contrasena debe tener como maximo {{max}} caracteres (estandar WPA)",
     "passwordHint": "{{min}}–{{max}} caracteres requeridos por el estandar WPA",
@@ -105,7 +107,10 @@
     "password": "Contrasena de cifrado",
     "passwordPlaceholder": "Introduzca una contrasena segura",
     "generate": "Generar enlace",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "urlTooLong": "El enlace puede ser demasiado largo para algunos navegadores",
+    "urlTooLongHint": "{{length}} caracteres (máximo recomendado: {{max}}). Comparta menos redes o use la función de exportación.",
+    "characters": "caracteres"
   },
   "import": {
     "title": "Importar credenciales WiFi",
@@ -162,5 +167,13 @@
     "no": "No",
     "or": "o",
     "optional": "opcional"
+  },
+  "tags": {
+    "title": "Etiquetas",
+    "all": "Todos",
+    "ungrouped": "Sin grupo",
+    "filterByTag": "Filtrar por etiqueta",
+    "printGroup": "Imprimir este grupo",
+    "shareGroup": "Compartir este grupo"
   }
 }

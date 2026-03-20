@@ -45,6 +45,8 @@
     "locationPlaceholder": "np. Pietro 2, Sala konferencyjna",
     "notes": "Notatki",
     "notesPlaceholder": "Dodatkowe informacje...",
+    "tags": "Tagi",
+    "tagsPlaceholder": "Dodaj tagi (np. Budynek, Piętro, Gość)...",
     "passwordTooShort": "Haslo musi miec co najmniej {{min}} znaków (standard WPA)",
     "passwordTooLong": "Haslo moze miec maksymalnie {{max}} znaków (standard WPA)",
     "passwordHint": "{{min}}–{{max}} znaków wymaganych przez standard WPA",
@@ -105,7 +107,10 @@
     "password": "Haslo szyfrowania",
     "passwordPlaceholder": "Wprowadz silne haslo",
     "generate": "Generuj link",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "urlTooLong": "Link może być zbyt długi dla niektórych przeglądarek",
+    "urlTooLongHint": "{{length}} znaków (zalecane maks: {{max}}). Udostępnij mniej sieci lub użyj funkcji eksportu.",
+    "characters": "znaków"
   },
   "import": {
     "title": "Importuj dane dostepu WiFi",
@@ -162,5 +167,13 @@
     "no": "Nie",
     "or": "lub",
     "optional": "opcjonalnie"
+  },
+  "tags": {
+    "title": "Tagi",
+    "all": "Wszystkie",
+    "ungrouped": "Bez grupy",
+    "filterByTag": "Filtruj według tagu",
+    "printGroup": "Drukuj tę grupę",
+    "shareGroup": "Udostępnij tę grupę"
   }
 }

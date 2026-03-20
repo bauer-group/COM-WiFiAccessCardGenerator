@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
 import {
   Wifi, WifiOff, Lock, ShieldCheck, MapPin, Pencil, Trash2,
-  Copy, Share2, Printer, Eye, EyeOff, Check, StickyNote,
+  Copy, Share2, Printer, Eye, EyeOff, Check, StickyNote, Tag,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -126,6 +126,18 @@ export function NetworkCard({ network, onEdit, onDelete, onPrint, onShare }: Net
                   <p className="text-xs whitespace-pre-wrap">{network.notes}</p>
                 </TooltipContent>
               </Tooltip>
+            )}
+
+            {/* Tags */}
+            {network.tags && network.tags.length > 0 && (
+              <div className="mt-1.5 flex items-center gap-1 flex-wrap">
+                <Tag className="h-3 w-3 text-[var(--muted-foreground)] flex-shrink-0" />
+                {network.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
             )}
           </div>
         </div>

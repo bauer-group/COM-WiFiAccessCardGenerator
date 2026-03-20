@@ -14,7 +14,7 @@
     "add": "添加网络",
     "edit": "编辑网络",
     "delete": "删除",
-    "deleteConfirm": "确定要删除"{{name}}"吗？",
+    "deleteConfirm": "确定要删除「{{name}}」吗？",
     "deleteConfirmText": "此操作无法撤销。",
     "duplicate": "复制",
     "search": "搜索网络...",
@@ -45,6 +45,8 @@
     "locationPlaceholder": "例如：2楼、会议室",
     "notes": "备注",
     "notesPlaceholder": "附加信息...",
+    "tags": "标签",
+    "tagsPlaceholder": "添加标签（如 大楼、楼层、访客）...",
     "passwordTooShort": "密码至少需要 {{min}} 个字符（WPA 标准）",
     "passwordTooLong": "密码最多 {{max}} 个字符（WPA 标准）",
     "passwordHint": "WPA 标准要求 {{min}}–{{max}} 个字符",
@@ -105,7 +107,10 @@
     "password": "加密密码",
     "passwordPlaceholder": "输入一个强密码",
     "generate": "生成链接",
-    "close": "关闭"
+    "close": "关闭",
+    "urlTooLong": "链接对某些浏览器可能过长",
+    "urlTooLongHint": "{{length}} 个字符（建议最大值：{{max}}）。请减少分享的网络数量或使用导出功能。",
+    "characters": "字符"
   },
   "import": {
     "title": "导入 WiFi 凭据",
@@ -162,5 +167,13 @@
     "no": "否",
     "or": "或",
     "optional": "可选"
+  },
+  "tags": {
+    "title": "标签",
+    "all": "全部",
+    "ungrouped": "未分组",
+    "filterByTag": "按标签筛选",
+    "printGroup": "打印此组",
+    "shareGroup": "分享此组"
   }
 }

@@ -45,6 +45,8 @@
     "locationPlaceholder": "orn. Kat 2, Toplanti Odasi",
     "notes": "Notlar",
     "notesPlaceholder": "Ek bilgiler...",
+    "tags": "Etiketler",
+    "tagsPlaceholder": "Etiket ekle (ör. Bina, Kat, Misafir)...",
     "passwordTooShort": "Sifre en az {{min}} karakter olmalidir (WPA standardi)",
     "passwordTooLong": "Sifre en fazla {{max}} karakter olmalidir (WPA standardi)",
     "passwordHint": "WPA standardi geregi {{min}}–{{max}} karakter gereklidir",
@@ -105,7 +107,10 @@
     "password": "Sifreleme Sifresi",
     "passwordPlaceholder": "Guclu bir sifre girin",
     "generate": "Baglanti Olustur",
-    "close": "Kapat"
+    "close": "Kapat",
+    "urlTooLong": "Bağlantı bazı tarayıcılar için çok uzun olabilir",
+    "urlTooLongHint": "{{length}} karakter (önerilen maks: {{max}}). Daha az ağ paylaşın veya dışa aktarma işlevini kullanın.",
+    "characters": "karakter"
   },
   "import": {
     "title": "WiFi Kimlik Bilgilerini Ice Aktar",
@@ -162,5 +167,13 @@
     "no": "Hayir",
     "or": "veya",
     "optional": "istege bagli"
+  },
+  "tags": {
+    "title": "Etiketler",
+    "all": "Tümü",
+    "ungrouped": "Grupsuz",
+    "filterByTag": "Etikete göre filtrele",
+    "printGroup": "Bu grubu yazdır",
+    "shareGroup": "Bu grubu paylaş"
   }
 }

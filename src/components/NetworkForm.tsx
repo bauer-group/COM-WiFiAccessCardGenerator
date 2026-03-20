@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye, EyeOff, Save, X } from 'lucide-react';
+import { TagInput } from '@/components/TagInput';
+import { getAllTags } from '@/db';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,6 +38,12 @@ export function NetworkForm({ network, onSave, onCancel }: NetworkFormProps) {
   const [eapPhase2, setEapPhase2] = useState<EapPhase2>(network?.eapPhase2 ?? 'MSCHAPV2');
   const [location, setLocation] = useState(network?.location ?? '');
   const [notes, setNotes] = useState(network?.notes ?? '');
+  const [tags, setTags] = useState<string[]>(network?.tags ?? []);
+  const [allTags, setAllTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    getAllTags().then(setAllTags);
+  }, []);
 
   useEffect(() => {
     if (security === 'open') {
@@ -59,6 +67,7 @@ export function NetworkForm({ network, onSave, onCancel }: NetworkFormProps) {
       eapPhase2: authMode === 'eap' && security !== 'open' ? eapPhase2 : undefined,
       location: location || undefined,
       notes: notes || undefined,
+      tags: tags.length > 0 ? tags : undefined,
     });
   };
 
@@ -268,6 +277,19 @@ export function NetworkForm({ network, onSave, onCancel }: NetworkFormProps) {
                 rows={2}
               />
             </div>
+          </div>
+
+          {/* Tags */}
+          <div className="space-y-2">
+            <Label>
+              {t('form.tags')} <span className="text-[var(--muted-foreground)] text-xs">({t('common.optional')})</span>
+            </Label>
+            <TagInput
+              value={tags}
+              onChange={setTags}
+              suggestions={allTags}
+              placeholder={t('form.tagsPlaceholder')}
+            />
           </div>
 
           {/* Actions */}

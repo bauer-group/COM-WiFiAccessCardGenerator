@@ -11,6 +11,11 @@ db.version(1).stores({
   settings: '++id',
 });
 
+db.version(2).stores({
+  networks: '++id, ssid, name, createdAt, updatedAt, *tags',
+  settings: '++id',
+});
+
 export { db };
 
 export async function getSettings(): Promise<AppSettings> {
@@ -74,4 +79,19 @@ export async function importNetworks(networks: WifiNetwork[]): Promise<number> {
 
 export async function exportAllNetworks(): Promise<WifiNetwork[]> {
   return db.networks.toArray();
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const networks = await db.networks.toArray();
+  const tagSet = new Set<string>();
+  for (const n of networks) {
+    if (n.tags) {
+      for (const t of n.tags) tagSet.add(t);
+    }
+  }
+  return Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+}
+
+export async function getNetworksByTag(tag: string): Promise<WifiNetwork[]> {
+  return db.networks.where('tags').equals(tag).toArray();
 }

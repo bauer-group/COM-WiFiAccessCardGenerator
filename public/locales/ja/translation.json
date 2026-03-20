@@ -45,6 +45,8 @@
     "locationPlaceholder": "例：2階、会議室",
     "notes": "メモ",
     "notesPlaceholder": "追加情報...",
+    "tags": "タグ",
+    "tagsPlaceholder": "タグを追加（例：ビル、フロア、ゲスト）...",
     "passwordTooShort": "パスワードは {{min}} 文字以上必要です（WPA 規格）",
     "passwordTooLong": "パスワードは {{max}} 文字以内にしてください（WPA 規格）",
     "passwordHint": "WPA 規格により {{min}}～{{max}} 文字が必要です",
@@ -105,7 +107,10 @@
     "password": "暗号化パスワード",
     "passwordPlaceholder": "強力なパスワードを入力",
     "generate": "リンクを生成",
-    "close": "閉じる"
+    "close": "閉じる",
+    "urlTooLong": "リンクが一部のブラウザには長すぎる可能性があります",
+    "urlTooLongHint": "{{length}} 文字（推奨最大値: {{max}}）。共有するネットワークを減らすか、エクスポート機能をご利用ください。",
+    "characters": "文字"
   },
   "import": {
     "title": "WiFi 資格情報のインポート",
@@ -162,5 +167,13 @@
     "no": "いいえ",
     "or": "または",
     "optional": "任意"
+  },
+  "tags": {
+    "title": "タグ",
+    "all": "すべて",
+    "ungrouped": "グループなし",
+    "filterByTag": "タグでフィルター",
+    "printGroup": "このグループを印刷",
+    "shareGroup": "このグループを共有"
   }
 }

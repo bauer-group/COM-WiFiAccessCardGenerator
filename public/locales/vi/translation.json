@@ -45,6 +45,8 @@
     "locationPlaceholder": "ví dụ: Tầng 2, Phòng họp",
     "notes": "Ghi chú",
     "notesPlaceholder": "Thông tin bổ sung...",
+    "tags": "Thẻ",
+    "tagsPlaceholder": "Thêm thẻ (VD: Tòa nhà, Tầng, Khách)...",
     "passwordTooShort": "Mật khẩu phải có ít nhất {{min}} ký tự (tiêu chuẩn WPA)",
     "passwordTooLong": "Mật khẩu tối đa {{max}} ký tự (tiêu chuẩn WPA)",
     "passwordHint": "Yêu cầu {{min}}–{{max}} ký tự theo tiêu chuẩn WPA",
@@ -105,7 +107,10 @@
     "password": "Mật khẩu mã hóa",
     "passwordPlaceholder": "Nhập mật khẩu mạnh",
     "generate": "Tạo liên kết",
-    "close": "Đóng"
+    "close": "Đóng",
+    "urlTooLong": "Liên kết có thể quá dài cho một số trình duyệt",
+    "urlTooLongHint": "{{length}} ký tự (tối đa khuyến nghị: {{max}}). Chia sẻ ít mạng hơn hoặc sử dụng chức năng xuất.",
+    "characters": "ký tự"
   },
   "import": {
     "title": "Nhập thông tin đăng nhập WiFi",
@@ -162,5 +167,13 @@
     "no": "Không",
     "or": "hoặc",
     "optional": "tùy chọn"
+  },
+  "tags": {
+    "title": "Thẻ",
+    "all": "Tất cả",
+    "ungrouped": "Chưa phân nhóm",
+    "filterByTag": "Lọc theo thẻ",
+    "printGroup": "In nhóm này",
+    "shareGroup": "Chia sẻ nhóm này"
   }
 }

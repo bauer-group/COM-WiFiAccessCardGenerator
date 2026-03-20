@@ -45,6 +45,8 @@
     "locationPlaceholder": "ex. Andar 2, Sala de conferencias",
     "notes": "Notas",
     "notesPlaceholder": "Informacoes adicionais...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Adicionar tags (ex. Edifício, Andar, Convidado)...",
     "passwordTooShort": "A senha deve ter pelo menos {{min}} caracteres (padrao WPA)",
     "passwordTooLong": "A senha deve ter no maximo {{max}} caracteres (padrao WPA)",
     "passwordHint": "{{min}}–{{max}} caracteres exigidos pelo padrao WPA",
@@ -105,7 +107,10 @@
     "password": "Senha de criptografia",
     "passwordPlaceholder": "Digite uma senha forte",
     "generate": "Gerar link",
-    "close": "Fechar"
+    "close": "Fechar",
+    "urlTooLong": "O link pode ser longo demais para alguns navegadores",
+    "urlTooLongHint": "{{length}} caracteres (máximo recomendado: {{max}}). Partilhe menos redes ou use a função de exportação.",
+    "characters": "caracteres"
   },
   "import": {
     "title": "Importar credenciais WiFi",
@@ -162,5 +167,13 @@
     "no": "Nao",
     "or": "ou",
     "optional": "opcional"
+  },
+  "tags": {
+    "title": "Tags",
+    "all": "Todos",
+    "ungrouped": "Sem grupo",
+    "filterByTag": "Filtrar por tag",
+    "printGroup": "Imprimir este grupo",
+    "shareGroup": "Partilhar este grupo"
   }
 }
