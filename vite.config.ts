@@ -52,6 +52,10 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
+        // Ensure the SW controls navigation requests (index.html),
+        // bypassing the browser's HTTP cache for the HTML shell.
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           {
             urlPattern: /\/locales\/.*\.json$/,
