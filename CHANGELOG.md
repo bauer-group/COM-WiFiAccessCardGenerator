@@ -1,3 +1,9 @@
+## [0.4.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.3.0...v0.4.0) (2026-03-20)
+
+### 🚀 Features
+
+* **tags:** added tagging system for network organization ([9a16d43](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/9a16d43b8ca2af3bd107a2a867bc6f872b6bd866))
+
 ## [0.3.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.2.0...v0.3.0) (2026-03-20)
 
 ### 🚀 Features
