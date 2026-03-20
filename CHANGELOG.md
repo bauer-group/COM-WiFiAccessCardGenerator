@@ -1,3 +1,9 @@
+## [0.2.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.1.1...v0.2.0) (2026-03-20)
+
+### 🚀 Features
+
+* **pwa:** added navigation fallback for PWA ([9b2d55b](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/9b2d55be8995e34aba2abf47cdf51d705f35ffdb))
+
 ## [0.1.1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.1.0...v0.1.1) (2026-03-20)
 
 ### ♻️ Refactoring
