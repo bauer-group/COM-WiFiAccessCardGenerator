@@ -1,3 +1,9 @@
+## [0.1.1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.1.0...v0.1.1) (2026-03-20)
+
+### ♻️ Refactoring
+
+* **ci:** simplified base URL configuration and deployment docs ([200c9ef](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/200c9ef6ea26e249a65f3a19f7b18b4fd382910e))
+
 ## [0.1.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.0.0...v0.1.0) (2026-03-20)
 
 ### 🚀 Features
