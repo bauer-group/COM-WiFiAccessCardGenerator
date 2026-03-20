@@ -25,7 +25,7 @@
 #   Current setup: Custom domain → BASE_URL not set → '/'
 # =============================================================================
 
-name: Deploy to GitHub Pages
+name: 🌐 Deploy to GitHub Pages
 
 on:
   push:
@@ -51,7 +51,7 @@ jobs:
   # Build
   # ---------------------------------------------------------------------------
   build:
-    name: Build
+    name: 🔨 Build
     runs-on: ubuntu-latest
 
     steps:
@@ -89,7 +89,7 @@ jobs:
   # Deploy
   # ---------------------------------------------------------------------------
   deploy:
-    name: Deploy
+    name: 🌐 Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -98,6 +98,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 🌐 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
