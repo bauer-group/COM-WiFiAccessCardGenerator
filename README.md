@@ -105,11 +105,37 @@ npm run preview
 
 ## Deployment
 
-### GitHub Pages (recommended)
+The app supports three deployment targets. The `BASE_URL` environment variable controls where the app expects its assets — it defaults to `/` (root) and only needs to be changed for GitHub Pages without a custom domain.
 
-Deployments are automated via GitHub Actions. Push to `main` and the workflow builds and deploys to GitHub Pages.
+| Scenario | BASE_URL | URL |
+| --- | --- | --- |
+| Local dev (`npm run dev`) | `/` (default) | `http://localhost:5173/` |
+| Docker (`docker compose up`) | `/` (default) | `http://localhost:8080/` |
+| GitHub Pages + custom domain | `/` (default) | `https://wifi-access-cards.app.bauer-group.com` |
+| GitHub Pages without custom domain | `/COM-WiFiAccessCardGenerator/` | `https://bauer-group.github.io/COM-WiFiAccessCardGenerator/` |
 
-**Setup:** Repository Settings > Pages > Source > **GitHub Actions**
+### GitHub Pages with custom domain (current setup)
+
+Deployments are automated via GitHub Actions. Push to `main` and the workflow builds and deploys.
+
+**Setup:**
+
+1. Repository Settings > Pages > Source > **GitHub Actions**
+2. Repository Settings > Pages > Custom domain > `wifi-access-cards.app.bauer-group.com`
+3. DNS: CNAME record pointing to `bauer-group.github.io`
+
+No `BASE_URL` configuration needed — the default `/` is correct for custom domains.
+
+### GitHub Pages without custom domain
+
+If no custom domain is configured, assets must be served from the repository subpath. Add the `BASE_URL` env to the build step in `.github/workflows/deploy-pages.yml`:
+
+```yaml
+- name: Build
+  run: npm run build
+  env:
+    BASE_URL: '/COM-WiFiAccessCardGenerator/'
+```
 
 ### Docker
 
@@ -123,11 +149,12 @@ docker compose up -d
 The Docker setup includes:
 
 - Multi-stage build (Node.js > Nginx Alpine)
-- Read-only root filesystem with minimal capabilities
+- Read-only root filesystem with minimal capabilities (`cap_drop: ALL`)
 - Resource limits (256MB memory, 1 CPU)
 - Security headers (CSP, X-Frame-Options, HSTS-ready)
 - Health check endpoint at `/health`
 - Gzip compression and optimized caching
+- Non-root Nginx user
 
 ---
 

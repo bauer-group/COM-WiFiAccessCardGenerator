@@ -6,8 +6,34 @@ import path from 'path';
 import { readFileSync } from 'fs';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
-const isGitHubPages = process.env.GITHUB_PAGES === 'true';
-const base = isGitHubPages ? '/COM-WiFiAccessCardGenerator/' : '/';
+
+/**
+ * Base URL configuration — controls where the app expects its assets to be served from.
+ * Set via the BASE_URL environment variable. Defaults to '/' (root).
+ *
+ * Deployment scenarios:
+ *
+ *   1. Local development (npm run dev)
+ *      → BASE_URL not set → defaults to '/'
+ *      → App runs at http://localhost:5173/
+ *
+ *   2. Docker (docker compose up)
+ *      → BASE_URL not set → defaults to '/'
+ *      → App runs at http://localhost:8080/
+ *
+ *   3. GitHub Pages WITH custom domain (e.g. wifi-access-cards.app.bauer-group.com)
+ *      → BASE_URL not set → defaults to '/'
+ *      → Custom domain serves from root, no subpath needed
+ *
+ *   4. GitHub Pages WITHOUT custom domain (e.g. bauer-group.github.io/COM-WiFiAccessCardGenerator/)
+ *      → Set BASE_URL='/COM-WiFiAccessCardGenerator/' in the workflow env
+ *      → Assets are served from the repo subpath
+ *
+ * To switch to scenario 4, add to the workflow build step:
+ *   env:
+ *     BASE_URL: '/COM-WiFiAccessCardGenerator/'
+ */
+const base = process.env.BASE_URL || '/';
 
 export default defineConfig({
   base,

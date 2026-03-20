@@ -1,80 +1,95 @@
 # =============================================================================
-# 🚀 GitHub Pages Deployment
+# GitHub Pages Deployment
 # =============================================================================
-# Automatically builds and deploys the PWA to GitHub Pages
+# Automatically builds and deploys the PWA to GitHub Pages.
 #
 # Triggers:
 #   - Push to main branch
 #   - Manual workflow dispatch
 #
 # Requirements:
-#   - Repository Settings → Pages → Source: "GitHub Actions"
+#   - Repository Settings > Pages > Source: "GitHub Actions"
+#
+# Base URL Configuration:
+#   The BASE_URL env var controls asset paths in the built app.
+#
+#   WITH custom domain (e.g. wifi-access-cards.app.bauer-group.com):
+#     - Do NOT set BASE_URL (defaults to '/')
+#     - Custom domain serves files from root
+#     - Requires a CNAME file in the repo root or configured in GitHub Pages settings
+#
+#   WITHOUT custom domain (e.g. bauer-group.github.io/COM-WiFiAccessCardGenerator/):
+#     - Set BASE_URL: '/COM-WiFiAccessCardGenerator/' in the build step env
+#     - Assets will be prefixed with the repository subpath
+#
+#   Current setup: Custom domain → BASE_URL not set → '/'
 # =============================================================================
 
-name: 🚀 Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
-  # Deploy on push to main
   push:
     branches:
       - main
 
-  # Allow manual trigger
   workflow_dispatch:
 
-# Sets permissions for GITHUB_TOKEN
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   # ---------------------------------------------------------------------------
-  # 🔨 Build
+  # Build
   # ---------------------------------------------------------------------------
   build:
-    name: 🔨 Build
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: 📦 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: 📚 Install dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: 🔍 Type check
+      - name: Type check
         run: npm run type-check
 
-      - name: 🏗️ Build for GitHub Pages
+      # BASE_URL is not set here → defaults to '/' (custom domain serves from root).
+      # To deploy WITHOUT a custom domain, uncomment the env block below:
+      #   env:
+      #     BASE_URL: '/COM-WiFiAccessCardGenerator/'
+      - name: Build
         run: npm run build
-        env:
-          GITHUB_PAGES: 'true'
 
-      - name: ⚙️ Setup Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: 📤 Upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: './dist'
 
   # ---------------------------------------------------------------------------
-  # 🌐 Deploy
+  # Deploy
   # ---------------------------------------------------------------------------
   deploy:
-    name: 🌐 Deploy
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -83,6 +98,6 @@ jobs:
     needs: build
 
     steps:
-      - name: 🚀 Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
