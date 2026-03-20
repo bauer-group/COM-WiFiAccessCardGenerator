@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.5.0...v0.5.1) (2026-03-20)
+
+### 🐛 Bug Fixes
+
+* **PrintDialog:** fixed settings not reloading on dialog reopen ([c8b1027](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/c8b10278e84f85a2739a63a84d9d20483d16c4ae))
+
 ## [0.5.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.4.0...v0.5.0) (2026-03-20)
 
 ### 🚀 Features
