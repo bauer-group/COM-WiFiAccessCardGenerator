@@ -1,9 +1,10 @@
 /**
- * Generates PWA icon placeholders.
- * For production, replace with actual brand icons from the Corporate Identity guide.
+ * Generates PWA icons as PNG files from an SVG template.
+ * Uses sharp for high-quality SVG → PNG conversion.
  *
  * Usage: node scripts/generate-icons.mjs
  */
+import sharp from 'sharp';
 import { writeFileSync } from 'fs';
 
 function generateSVGIcon(size) {
@@ -24,13 +25,15 @@ function generateSVGIcon(size) {
 </svg>`;
 }
 
-// Generate simple PNG-like SVGs (browsers accept SVG for PWA icons)
-// For actual PNG generation, use a canvas library or design tool
 for (const size of [192, 512]) {
-  const svg = generateSVGIcon(size);
-  writeFileSync(`public/icon-${size}x${size}.svg`, svg);
-  console.log(`Generated public/icon-${size}x${size}.svg`);
+  const svg = Buffer.from(generateSVGIcon(size));
+  await sharp(svg).resize(size, size).png().toFile(`public/icon-${size}x${size}.png`);
+  console.log(`Generated public/icon-${size}x${size}.png (${size}x${size})`);
 }
 
-console.log('\\nNote: For production, convert SVGs to PNGs and replace icon-*.png files.');
-console.log('You can use: npx sharp-cli -i public/icon-512x512.svg -o public/icon-512x512.png resize 512 512');
+// Also generate favicon
+const faviconSvg = Buffer.from(generateSVGIcon(32));
+await sharp(faviconSvg).resize(32, 32).png().toFile('public/favicon.ico');
+console.log('Generated public/favicon.ico (32x32)');
+
+console.log('\nDone! PWA icons are ready.');

@@ -64,7 +64,7 @@ export default defineConfig({
       manifest: {
         name: 'WiFi Access Card Generator | BAUER GROUP',
         short_name: 'WiFi Gen',
-        description: 'Generate WiFi credential sheets with QR codes for easy network access',
+        description: 'Generate WiFi access cards with QR codes for easy network access',
         theme_color: '#FF8500',
         background_color: '#ffffff',
         display: 'standalone',
