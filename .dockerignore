@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.github
+.vscode
+*.md
+!README.md
+.env*
+.DS_Store
+Thumbs.db
+coverage
+.vitest
+*.log
+docker-compose*.yml
