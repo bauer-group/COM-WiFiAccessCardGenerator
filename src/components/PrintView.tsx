@@ -46,8 +46,8 @@ function uniqueTexts(labels: PrintLabels[], field: keyof PrintLabels): string[] 
 function LabelRow({ labels, field, value }: { labels: PrintLabels[]; field: keyof PrintLabels; value: string }) {
   const texts = uniqueTexts(labels, field);
   return (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'baseline', marginBottom: '10px' }}>
-      <div style={{ minWidth: '140px', flexShrink: 0 }}>
+    <div style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginBottom: '10px' }}>
+      <div style={{ minWidth: '100px', flexShrink: 0 }}>
         {texts.map((text, i) => (
           <div key={i} style={{
             fontSize: i === 0 ? '12px' : '10px',
@@ -121,14 +121,14 @@ function SheetLayout({ networks, langs, multilingual }: { networks: WifiNetwork[
             key={network.id ?? idx}
             className={idx > 0 ? 'print-break-before' : ''}
             style={{
-              padding: '20mm 25mm',
+              padding: '15mm 15mm',
               fontFamily: 'system-ui, -apple-system, sans-serif',
               color: '#231F1C',
               pageBreakAfter: idx < networks.length - 1 ? 'always' : 'auto',
             }}
           >
             {/* Header */}
-            <div style={{ borderBottom: '3px solid #FF8500', paddingBottom: '16px', marginBottom: '28px' }}>
+            <div style={{ borderBottom: '3px solid #FF8500', paddingBottom: '12px', marginBottom: '20px' }}>
               <h1 style={{ fontSize: '26px', fontWeight: 700, margin: 0 }}>
                 {network.name}
               </h1>
@@ -138,7 +138,7 @@ function SheetLayout({ networks, langs, multilingual }: { networks: WifiNetwork[
             </div>
 
             {/* Content */}
-            <div style={{ display: 'flex', gap: '36px', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
               {/* QR Code */}
               <div style={{
                 flexShrink: 0,
