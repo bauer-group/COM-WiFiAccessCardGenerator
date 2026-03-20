@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Printer, Download, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,7 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { PrintView } from './PrintView';
+import { getSettings } from '@/db';
 import { SUPPORTED_LANGUAGES, type SupportedLanguage, type PrintLayout, type WifiNetwork } from '@/types';
 
 interface PrintDialogProps {
@@ -43,6 +44,23 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
   const [multilingual, setMultilingual] = useState(false);
   const [printLangs, setPrintLangs] = useState<string[]>([defaultLanguage || i18n.language?.split('-')[0] || 'en']);
   const [downloading, setDownloading] = useState(false);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
+
+  // Load saved print defaults from IndexedDB on first open
+  useEffect(() => {
+    if (!open || settingsLoaded) return;
+    getSettings().then((s) => {
+      setLayout(s.defaultPrintLayout);
+      setMultilingual(s.printMultilingual);
+      const uiLang = i18n.language?.split('-')[0] || 'en';
+      if (s.printLanguages.length > 0) {
+        setPrintLangs(s.printLanguages);
+      } else {
+        setPrintLangs([defaultLanguage || uiLang]);
+      }
+      setSettingsLoaded(true);
+    });
+  }, [open, settingsLoaded, defaultLanguage, i18n.language]);
 
   const toggleLang = useCallback((lang: string) => {
     setPrintLangs((prev) =>

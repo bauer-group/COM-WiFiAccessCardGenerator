@@ -124,6 +124,29 @@ export function SettingsPanel({ onBack }: SettingsPanelProps) {
             </Select>
           </div>
 
+          <div className="space-y-2">
+            <Label>{t('print.language')}</Label>
+            <Select
+              value={settings.printLanguages[0] || i18n.language?.split('-')[0] || 'en'}
+              onValueChange={(v) => {
+                const langs = settings.printLanguages.length > 0
+                  ? [v, ...settings.printLanguages.filter((l) => l !== v)]
+                  : [v];
+                update({ printLanguages: langs });
+              }}
+            >
+              <SelectTrigger className="w-[200px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {(Object.entries(SUPPORTED_LANGUAGES) as [SupportedLanguage, string][]).map(([code, label]) => (
+                  <SelectItem key={code} value={code}>{label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-[var(--muted-foreground)]">{t('print.languageHint')}</p>
+          </div>
+
           <div className="flex items-center gap-3">
             <Switch
               id="multiDefault"
@@ -135,6 +158,33 @@ export function SettingsPanel({ onBack }: SettingsPanelProps) {
               <p className="text-xs text-[var(--muted-foreground)]">{t('print.multilingualHint')}</p>
             </div>
           </div>
+
+          {settings.printMultilingual && (
+            <div>
+              <Label className="text-xs mb-1.5 block">{t('print.selectLanguages')}</Label>
+              <div className="flex flex-wrap gap-1.5">
+                {(Object.entries(SUPPORTED_LANGUAGES) as [SupportedLanguage, string][]).map(([code, label]) => (
+                  <button
+                    key={code}
+                    onClick={() => {
+                      const current = settings.printLanguages;
+                      const updated = current.includes(code)
+                        ? current.filter((l) => l !== code)
+                        : [...current, code];
+                      update({ printLanguages: updated.length > 0 ? updated : [code] });
+                    }}
+                    className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+                      settings.printLanguages.includes(code)
+                        ? 'bg-[var(--primary)] text-white border-[var(--primary)]'
+                        : 'border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--primary)]'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 
