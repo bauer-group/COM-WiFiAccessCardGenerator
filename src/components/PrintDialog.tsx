@@ -46,7 +46,12 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
   const [downloading, setDownloading] = useState(false);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
 
-  // Load saved print defaults from IndexedDB on first open
+  // Reset settingsLoaded when dialog closes, so re-opening re-reads from DB
+  useEffect(() => {
+    if (!open) setSettingsLoaded(false);
+  }, [open]);
+
+  // Load saved print defaults from IndexedDB on each open
   useEffect(() => {
     if (!open || settingsLoaded) return;
     getSettings().then((s) => {
