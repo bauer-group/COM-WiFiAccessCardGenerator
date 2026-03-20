@@ -8,9 +8,10 @@ interface PrintViewProps {
   layout: PrintLayout;
   languages: string[];
   multilingual: boolean;
+  showGuide?: boolean;
 }
 
-export function PrintView({ networks, layout, languages, multilingual }: PrintViewProps) {
+export function PrintView({ networks, layout, languages, multilingual, showGuide = false }: PrintViewProps) {
   const langs = languages.length > 0 ? languages : ['en'];
 
   if (layout === 'sticker') {
@@ -19,7 +20,7 @@ export function PrintView({ networks, layout, languages, multilingual }: PrintVi
   if (layout === 'card') {
     return <CardLayout networks={networks} langs={langs} multilingual={multilingual} />;
   }
-  return <SheetLayout networks={networks} langs={langs} multilingual={multilingual} />;
+  return <SheetLayout networks={networks} langs={langs} multilingual={multilingual} showGuide={showGuide} />;
 }
 
 /**
@@ -107,7 +108,7 @@ function NoticeTexts({ labels, field, color }: { labels: PrintLabels[]; field: k
 }
 
 /* ─── Information Sheet (A4) ──────────────────────── */
-function SheetLayout({ networks, langs, multilingual }: { networks: WifiNetwork[]; langs: string[]; multilingual: boolean }) {
+function SheetLayout({ networks, langs, multilingual, showGuide = false }: { networks: WifiNetwork[]; langs: string[]; multilingual: boolean; showGuide?: boolean }) {
   return (
     <div>
       {networks.map((network, idx) => {
@@ -181,9 +182,117 @@ function SheetLayout({ networks, langs, multilingual }: { networks: WifiNetwork[
                 {network.notes}
               </div>
             )}
+
+            {/* Optional connection guide */}
+            {showGuide && <ConnectionGuide labels={labels} />}
           </div>
         );
       })}
+    </div>
+  );
+}
+
+/* ─── Illustrated Connection Guide (for sheet layout) ── */
+function ConnectionGuide({ labels }: { labels: PrintLabels[] }) {
+  const texts = {
+    title: uniqueTexts(labels, 'guideTitle'),
+    step1: uniqueTexts(labels, 'guideStep1'),
+    step2: uniqueTexts(labels, 'guideStep2'),
+    step3: uniqueTexts(labels, 'guideStep3'),
+    step4: uniqueTexts(labels, 'guideStep4'),
+  };
+
+  const stepIconSize = 48;
+  const iconColor = '#FF8500';
+  const iconBg = '#FFF7ED';
+
+  const steps = [
+    { texts: texts.step1, icon: (
+      <svg width={stepIconSize} height={stepIconSize} viewBox="0 0 48 48" fill="none">
+        <rect x="12" y="6" width="24" height="36" rx="4" stroke={iconColor} strokeWidth="2.5" fill="none" />
+        <circle cx="24" cy="19" r="6" stroke={iconColor} strokeWidth="2" fill={iconBg} />
+        <circle cx="24" cy="19" r="2.5" fill={iconColor} />
+        <rect x="20" y="34" width="8" height="3" rx="1.5" fill={iconColor} opacity="0.4" />
+      </svg>
+    )},
+    { texts: texts.step2, icon: (
+      <svg width={stepIconSize} height={stepIconSize} viewBox="0 0 48 48" fill="none">
+        <rect x="4" y="8" width="20" height="20" rx="2" stroke={iconColor} strokeWidth="2" fill={iconBg} />
+        <rect x="7" y="11" width="4" height="4" fill={iconColor} />
+        <rect x="13" y="11" width="4" height="4" fill={iconColor} />
+        <rect x="7" y="17" width="4" height="4" fill={iconColor} />
+        <rect x="13" y="17" width="4" height="4" fill={iconColor} />
+        <rect x="10" y="14" width="4" height="4" fill={iconBg} />
+        <rect x="26" y="12" width="18" height="28" rx="3" stroke={iconColor} strokeWidth="2" fill="none" />
+        <line x1="22" y1="22" x2="30" y2="18" stroke={iconColor} strokeWidth="1.5" strokeDasharray="3 2" />
+      </svg>
+    )},
+    { texts: texts.step3, icon: (
+      <svg width={stepIconSize} height={stepIconSize} viewBox="0 0 48 48" fill="none">
+        <rect x="12" y="6" width="24" height="36" rx="4" stroke={iconColor} strokeWidth="2.5" fill="none" />
+        <rect x="16" y="14" width="16" height="10" rx="3" fill={iconBg} stroke={iconColor} strokeWidth="1.5" />
+        <text x="24" y="21.5" textAnchor="middle" fontSize="7" fontWeight="700" fill={iconColor}>WiFi</text>
+        <circle cx="24" cy="35" r="4" fill={iconColor} opacity="0.2" />
+        <path d="M22 33 L24 37 L26 33" fill={iconColor} opacity="0.5" />
+      </svg>
+    )},
+    { texts: texts.step4, icon: (
+      <svg width={stepIconSize} height={stepIconSize} viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="16" fill={iconBg} stroke={iconColor} strokeWidth="2.5" />
+        <path d="M16 24 L22 30 L32 18" stroke={iconColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      </svg>
+    )},
+  ];
+
+  return (
+    <div style={{ marginTop: '32px', borderTop: '2px solid #E0DBD6', paddingTop: '24px' }}>
+      {/* Guide title — multilingual stacked */}
+      <div style={{ marginBottom: '20px' }}>
+        {texts.title.map((text, i) => (
+          <div key={i} style={{
+            fontSize: i === 0 ? '16px' : '12px',
+            fontWeight: i === 0 ? 700 : 400,
+            color: i === 0 ? '#231F1C' : '#A69E97',
+            lineHeight: 1.4,
+          }}>
+            {text}
+          </div>
+        ))}
+      </div>
+
+      {/* 4 Steps in a row */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px' }}>
+        {steps.map((step, idx) => (
+          <div key={idx} style={{ flex: 1, textAlign: 'center' }}>
+            {/* Step number */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              width: '24px', height: '24px', borderRadius: '50%',
+              background: iconColor, color: '#fff', fontSize: '13px', fontWeight: 700,
+              marginBottom: '10px',
+            }}>
+              {idx + 1}
+            </div>
+
+            {/* Icon */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+              {step.icon}
+            </div>
+
+            {/* Label — multilingual stacked */}
+            {step.texts.map((text, i) => (
+              <div key={i} style={{
+                fontSize: i === 0 ? '12px' : '10px',
+                fontWeight: i === 0 ? 600 : 400,
+                color: i === 0 ? '#231F1C' : '#A69E97',
+                lineHeight: 1.35,
+              }}>
+                {text}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

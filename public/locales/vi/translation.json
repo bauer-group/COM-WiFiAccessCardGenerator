@@ -91,7 +91,9 @@
     "selected": "Đã chọn {{count}}",
     "selectNetworks": "Chọn mạng để in",
     "printAll": "In tất cả",
-    "printSelected": "In mục đã chọn"
+    "printSelected": "In mục đã chọn",
+    "showGuide": "Hướng dẫn kết nối",
+    "showGuideHint": "Hiển thị hướng dẫn trên bản in"
   },
   "share": {
     "title": "Chia sẻ",

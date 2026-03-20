@@ -91,7 +91,9 @@
     "selected": "已选 {{count}} 个",
     "selectNetworks": "选择要打印的网络",
     "printAll": "全部打印",
-    "printSelected": "打印所选"
+    "printSelected": "打印所选",
+    "showGuide": "连接指南",
+    "showGuideHint": "在打印件上显示说明"
   },
   "share": {
     "title": "分享",

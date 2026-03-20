@@ -91,7 +91,9 @@
     "selected": "{{count}}개 선택됨",
     "selectNetworks": "인쇄할 네트워크 선택",
     "printAll": "모두 인쇄",
-    "printSelected": "선택 항목 인쇄"
+    "printSelected": "선택 항목 인쇄",
+    "showGuide": "연결 가이드",
+    "showGuideHint": "인쇄물에 안내 표시"
   },
   "share": {
     "title": "공유",

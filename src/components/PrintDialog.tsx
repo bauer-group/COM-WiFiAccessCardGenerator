@@ -43,6 +43,7 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
   const [layout, setLayout] = useState<PrintLayout>('sheet');
   const [multilingual, setMultilingual] = useState(false);
   const [printLangs, setPrintLangs] = useState<string[]>([defaultLanguage || i18n.language?.split('-')[0] || 'en']);
+  const [showGuide, setShowGuide] = useState(true);
   const [downloading, setDownloading] = useState(false);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
 
@@ -263,6 +264,13 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
             <Label htmlFor="multilingual" className="text-xs">{t('print.multilingual')}</Label>
           </div>
 
+          {layout === 'sheet' && (
+            <div className="flex items-center gap-2">
+              <Switch id="showGuide" checked={showGuide} onCheckedChange={setShowGuide} />
+              <Label htmlFor="showGuide" className="text-xs">{t('print.showGuide')}</Label>
+            </div>
+          )}
+
           {multilingual && (
             <div className="w-full">
               <Label className="text-xs mb-1.5 block">{t('print.selectLanguages')}</Label>
@@ -293,6 +301,7 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
               layout={layout}
               languages={printLangs}
               multilingual={multilingual}
+              showGuide={showGuide}
             />
           </div>
         </div>

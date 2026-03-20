@@ -91,7 +91,9 @@
     "selected": "{{count}} выбрано",
     "selectNetworks": "Выберите сети для печати",
     "printAll": "Печатать все",
-    "printSelected": "Печатать выбранные"
+    "printSelected": "Печатать выбранные",
+    "showGuide": "Инструкция подключения",
+    "showGuideHint": "Показать инструкцию на распечатке"
   },
   "share": {
     "title": "Поделиться",

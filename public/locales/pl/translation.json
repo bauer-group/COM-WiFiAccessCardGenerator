@@ -91,7 +91,9 @@
     "selected": "{{count}} zaznaczonych",
     "selectNetworks": "Wybierz sieci do wydruku",
     "printAll": "Drukuj wszystko",
-    "printSelected": "Drukuj zaznaczone"
+    "printSelected": "Drukuj zaznaczone",
+    "showGuide": "Instrukcja połączenia",
+    "showGuideHint": "Pokaż instrukcje na wydruku"
   },
   "share": {
     "title": "Udostepnij",

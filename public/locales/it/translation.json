@@ -91,7 +91,9 @@
     "selected": "{{count}} selezionato/i",
     "selectNetworks": "Seleziona le reti da stampare",
     "printAll": "Stampa tutto",
-    "printSelected": "Stampa selezione"
+    "printSelected": "Stampa selezione",
+    "showGuide": "Guida alla connessione",
+    "showGuideHint": "Mostra istruzioni sul documento"
   },
   "share": {
     "title": "Condividi",

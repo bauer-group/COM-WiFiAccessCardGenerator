@@ -91,7 +91,9 @@
     "selected": "{{count}} 件選択済み",
     "selectNetworks": "印刷するネットワークを選択",
     "printAll": "すべて印刷",
-    "printSelected": "選択項目を印刷"
+    "printSelected": "選択項目を印刷",
+    "showGuide": "接続ガイド",
+    "showGuideHint": "印刷物に手順を表示"
   },
   "share": {
     "title": "共有",

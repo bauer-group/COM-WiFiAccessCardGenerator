@@ -91,7 +91,9 @@
     "selected": "{{count}} محدد",
     "selectNetworks": "اختر الشبكات للطباعة",
     "printAll": "طباعة الكل",
-    "printSelected": "طباعة المحدد"
+    "printSelected": "طباعة المحدد",
+    "showGuide": "دليل الاتصال",
+    "showGuideHint": "عرض التعليمات على المطبوعة"
   },
   "share": {
     "title": "مشاركة",

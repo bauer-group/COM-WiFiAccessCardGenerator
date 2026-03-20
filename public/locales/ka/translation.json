@@ -91,7 +91,9 @@
     "selected": "{{count}} არჩეული",
     "selectNetworks": "აირჩიეთ ქსელები დასაბეჭდად",
     "printAll": "ყველას დაბეჭდვა",
-    "printSelected": "არჩეულის დაბეჭდვა"
+    "printSelected": "არჩეულის დაბეჭდვა",
+    "showGuide": "კავშირის სახელმძღვანელო",
+    "showGuideHint": "ბეჭდვაზე ინსტრუქციის ჩვენება"
   },
   "share": {
     "title": "გაზიარება",

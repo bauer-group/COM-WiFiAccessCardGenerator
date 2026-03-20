@@ -91,7 +91,9 @@
     "selected": "{{count}} selectionne(s)",
     "selectNetworks": "Selectionner les reseaux a imprimer",
     "printAll": "Tout imprimer",
-    "printSelected": "Imprimer la selection"
+    "printSelected": "Imprimer la selection",
+    "showGuide": "Guide de connexion",
+    "showGuideHint": "Afficher les instructions sur le document"
   },
   "share": {
     "title": "Partager",

@@ -91,7 +91,9 @@
     "selected": "เลือกแล้ว {{count}} รายการ",
     "selectNetworks": "เลือกเครือข่ายที่จะพิมพ์",
     "printAll": "พิมพ์ทั้งหมด",
-    "printSelected": "พิมพ์ที่เลือก"
+    "printSelected": "พิมพ์ที่เลือก",
+    "showGuide": "คู่มือการเชื่อมต่อ",
+    "showGuideHint": "แสดงคำแนะนำบนเอกสาร"
   },
   "share": {
     "title": "แชร์",

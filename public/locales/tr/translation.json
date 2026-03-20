@@ -91,7 +91,9 @@
     "selected": "{{count}} secili",
     "selectNetworks": "Yazdirilacak aglari secin",
     "printAll": "Tumunu Yazdir",
-    "printSelected": "Secilenleri Yazdir"
+    "printSelected": "Secilenleri Yazdir",
+    "showGuide": "Bağlantı rehberi",
+    "showGuideHint": "Belgede talimatları göster"
   },
   "share": {
     "title": "Paylas",

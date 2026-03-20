@@ -10,6 +10,11 @@ export interface PrintLabels {
   hiddenNetwork: string;
   noPassword: string;
   enterpriseAuth: string;
+  guideTitle: string;
+  guideStep1: string;
+  guideStep2: string;
+  guideStep3: string;
+  guideStep4: string;
 }
 
 export const printLabels: Record<string, PrintLabels> = {
@@ -21,6 +26,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'This is a hidden network. You may need to enter the network name manually.',
     noPassword: 'No password required',
     enterpriseAuth: 'Enterprise authentication — contact your IT administrator for credentials.',
+    guideTitle: 'How to connect',
+    guideStep1: 'Open Camera',
+    guideStep2: 'Scan QR Code',
+    guideStep3: 'Tap Notification',
+    guideStep4: 'Connected!',
   },
   de: {
     networkName: 'Netzwerkname',
@@ -30,6 +40,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Dies ist ein verstecktes Netzwerk. Möglicherweise müssen Sie den Netzwerknamen manuell eingeben.',
     noPassword: 'Kein Passwort erforderlich',
     enterpriseAuth: 'Enterprise-Authentifizierung — wenden Sie sich an Ihren IT-Administrator.',
+    guideTitle: 'So verbinden Sie sich',
+    guideStep1: 'Kamera öffnen',
+    guideStep2: 'QR-Code scannen',
+    guideStep3: 'Hinweis antippen',
+    guideStep4: 'Verbunden!',
   },
   fr: {
     networkName: 'Nom du réseau',
@@ -39,6 +54,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Ceci est un réseau masqué. Vous devrez peut-être saisir le nom du réseau manuellement.',
     noPassword: 'Aucun mot de passe requis',
     enterpriseAuth: 'Authentification entreprise — contactez votre administrateur IT.',
+    guideTitle: 'Comment se connecter',
+    guideStep1: 'Ouvrir l\'appareil photo',
+    guideStep2: 'Scanner le QR code',
+    guideStep3: 'Appuyer sur la notification',
+    guideStep4: 'Connecté !',
   },
   es: {
     networkName: 'Nombre de red',
@@ -48,6 +68,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Esta es una red oculta. Es posible que necesites ingresar el nombre de la red manualmente.',
     noPassword: 'No se requiere contraseña',
     enterpriseAuth: 'Autenticación empresarial — contacte a su administrador de TI.',
+    guideTitle: 'Cómo conectarse',
+    guideStep1: 'Abrir cámara',
+    guideStep2: 'Escanear código QR',
+    guideStep3: 'Tocar notificación',
+    guideStep4: '¡Conectado!',
   },
   it: {
     networkName: 'Nome della rete',
@@ -57,6 +82,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Questa è una rete nascosta. Potrebbe essere necessario inserire il nome della rete manualmente.',
     noPassword: 'Nessuna password richiesta',
     enterpriseAuth: 'Autenticazione aziendale — contattare l\'amministratore IT.',
+    guideTitle: 'Come connettersi',
+    guideStep1: 'Aprire fotocamera',
+    guideStep2: 'Scansionare il QR',
+    guideStep3: 'Toccare la notifica',
+    guideStep4: 'Connesso!',
   },
   pt: {
     networkName: 'Nome da rede',
@@ -66,6 +96,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Esta é uma rede oculta. Talvez seja necessário inserir o nome da rede manualmente.',
     noPassword: 'Nenhuma senha necessária',
     enterpriseAuth: 'Autenticação empresarial — entre em contato com o administrador de TI.',
+    guideTitle: 'Como se conectar',
+    guideStep1: 'Abrir câmera',
+    guideStep2: 'Escanear QR Code',
+    guideStep3: 'Tocar na notificação',
+    guideStep4: 'Conectado!',
   },
   tr: {
     networkName: 'Ağ Adı',
@@ -75,6 +110,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Bu gizli bir ağdır. Ağ adını manuel olarak girmeniz gerekebilir.',
     noPassword: 'Şifre gerekli değil',
     enterpriseAuth: 'Kurumsal kimlik doğrulama — IT yöneticinize başvurun.',
+    guideTitle: 'Nasıl bağlanılır',
+    guideStep1: 'Kamerayı aç',
+    guideStep2: 'QR kodu tara',
+    guideStep3: 'Bildirime dokun',
+    guideStep4: 'Bağlandı!',
   },
   ar: {
     networkName: 'اسم الشبكة',
@@ -84,6 +124,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'هذه شبكة مخفية. قد تحتاج إلى إدخال اسم الشبكة يدوياً.',
     noPassword: 'لا تحتاج كلمة مرور',
     enterpriseAuth: 'مصادقة المؤسسات — اتصل بمسؤول تكنولوجيا المعلومات.',
+    guideTitle: 'كيفية الاتصال',
+    guideStep1: 'افتح الكاميرا',
+    guideStep2: 'امسح رمز QR',
+    guideStep3: 'اضغط على الإشعار',
+    guideStep4: 'متصل!',
   },
   zh: {
     networkName: '网络名称',
@@ -93,6 +138,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: '这是一个隐藏网络。您可能需要手动输入网络名称。',
     noPassword: '无需密码',
     enterpriseAuth: '企业认证 — 请联系您的IT管理员获取凭据。',
+    guideTitle: '如何连接',
+    guideStep1: '打开相机',
+    guideStep2: '扫描二维码',
+    guideStep3: '点击通知',
+    guideStep4: '已连接！',
   },
   ja: {
     networkName: 'ネットワーク名',
@@ -102,6 +152,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'これは非公開ネットワークです。ネットワーク名を手動で入力する必要がある場合があります。',
     noPassword: 'パスワード不要',
     enterpriseAuth: 'エンタープライズ認証 — IT管理者にお問い合わせください。',
+    guideTitle: '接続方法',
+    guideStep1: 'カメラを開く',
+    guideStep2: 'QRコードをスキャン',
+    guideStep3: '通知をタップ',
+    guideStep4: '接続完了！',
   },
   ko: {
     networkName: '네트워크 이름',
@@ -111,6 +166,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: '이 네트워크는 숨겨져 있습니다. 네트워크 이름을 수동으로 입력해야 할 수 있습니다.',
     noPassword: '비밀번호 불필요',
     enterpriseAuth: '기업 인증 — IT 관리자에게 문의하세요.',
+    guideTitle: '연결 방법',
+    guideStep1: '카메라 열기',
+    guideStep2: 'QR 코드 스캔',
+    guideStep3: '알림 탭',
+    guideStep4: '연결됨!',
   },
   pl: {
     networkName: 'Nazwa sieci',
@@ -120,6 +180,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'To jest ukryta sieć. Może być konieczne ręczne wprowadzenie nazwy sieci.',
     noPassword: 'Hasło nie jest wymagane',
     enterpriseAuth: 'Uwierzytelnianie korporacyjne — skontaktuj się z administratorem IT.',
+    guideTitle: 'Jak się połączyć',
+    guideStep1: 'Otwórz aparat',
+    guideStep2: 'Zeskanuj kod QR',
+    guideStep3: 'Dotknij powiadomienie',
+    guideStep4: 'Połączono!',
   },
   ru: {
     networkName: 'Имя сети',
@@ -129,6 +194,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Это скрытая сеть. Возможно, потребуется ввести имя сети вручную.',
     noPassword: 'Пароль не требуется',
     enterpriseAuth: 'Корпоративная аутентификация — обратитесь к IT-администратору.',
+    guideTitle: 'Как подключиться',
+    guideStep1: 'Откройте камеру',
+    guideStep2: 'Сканируйте QR-код',
+    guideStep3: 'Нажмите уведомление',
+    guideStep4: 'Подключено!',
   },
   ka: {
     networkName: 'ქსელის სახელი',
@@ -138,6 +208,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'ეს არის დამალული ქსელი. შეიძლება საჭირო გახდეს ქსელის სახელის ხელით შეყვანა.',
     noPassword: 'პაროლი არ არის საჭირო',
     enterpriseAuth: 'კორპორატიული ავთენტიფიკაცია — დაუკავშირდით IT ადმინისტრატორს.',
+    guideTitle: 'როგორ დაუკავშირდეთ',
+    guideStep1: 'გახსენით კამერა',
+    guideStep2: 'დაასკანერეთ QR კოდი',
+    guideStep3: 'შეეხეთ შეტყობინებას',
+    guideStep4: 'დაკავშირებულია!',
   },
   th: {
     networkName: 'ชื่อเครือข่าย',
@@ -147,6 +222,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'นี่คือเครือข่ายที่ซ่อนอยู่ คุณอาจต้องป้อนชื่อเครือข่ายด้วยตนเอง',
     noPassword: 'ไม่ต้องใช้รหัสผ่าน',
     enterpriseAuth: 'การยืนยันตัวตนระดับองค์กร — ติดต่อผู้ดูแลระบบ IT',
+    guideTitle: 'วิธีเชื่อมต่อ',
+    guideStep1: 'เปิดกล้อง',
+    guideStep2: 'สแกน QR โค้ด',
+    guideStep3: 'แตะการแจ้งเตือน',
+    guideStep4: 'เชื่อมต่อแล้ว!',
   },
   vi: {
     networkName: 'Tên mạng',
@@ -156,6 +236,11 @@ export const printLabels: Record<string, PrintLabels> = {
     hiddenNetwork: 'Đây là mạng ẩn. Bạn có thể cần nhập tên mạng thủ công.',
     noPassword: 'Không cần mật khẩu',
     enterpriseAuth: 'Xác thực doanh nghiệp — liên hệ quản trị viên CNTT.',
+    guideTitle: 'Cách kết nối',
+    guideStep1: 'Mở camera',
+    guideStep2: 'Quét mã QR',
+    guideStep3: 'Nhấn thông báo',
+    guideStep4: 'Đã kết nối!',
   },
 };
 

@@ -90,6 +90,8 @@
     "generatedWith": "Generated with WiFi Access Card Generator",
     "selected": "{{count}} selected",
     "selectNetworks": "Select networks to print",
+    "showGuide": "Connection guide",
+    "showGuideHint": "Show step-by-step instructions on the printout",
     "printAll": "Print All",
     "printSelected": "Print Selected"
   },
