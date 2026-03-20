@@ -121,11 +121,12 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector', 'i18next-http-backend'],
-          qrcode: ['qrcode.react'],
-          db: ['dexie', 'dexie-react-hooks'],
+        // Vite 8 (Rolldown) requires manualChunks as a function, not an object
+        manualChunks(id: string) {
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) return 'vendor';
+          if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) return 'i18n';
+          if (id.includes('node_modules/qrcode.react')) return 'qrcode';
+          if (id.includes('node_modules/dexie')) return 'db';
         },
       },
     },
