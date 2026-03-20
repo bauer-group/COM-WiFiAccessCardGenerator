@@ -33,6 +33,7 @@ Manage multiple wireless networks, generate printable materials in 16 languages,
 - Support for **Open**, **WPA/WPA2/WPA3 PSK**, and **WPA2/WPA3 Enterprise (EAP)** networks
 - EAP configuration: PEAP, TLS, TTLS, LEAP, PWD with Phase 2 authentication
 - PSK password validation enforcing WPA standard (8–63 characters)
+- **Tags** — organize networks with multiple tags (e.g. building, floor, department); collapsible groups in the overview with per-group print and share actions
 - Search, edit, duplicate, and organize your networks
 
 ### Printable Materials
@@ -40,9 +41,10 @@ Manage multiple wireless networks, generate printable materials in 16 languages,
 - **Information Sheets** (A4) — full-page layout with large QR code, ideal for laminating
 - **Stickers** — compact 2-per-row layout, cut along dashed borders
 - **Cards** — credit card size (85.6 x 54mm), perfect for laminated handouts
+- **Connection guide** — optional illustrated step-by-step instructions on information sheets (open camera → scan QR → tap notification → connected)
 - Real-time print preview with layout selection
 - Direct printing via browser (suppressed headers/footers)
-- **PDF download** — generates actual PDF files with embedded metadata (author, title, keywords)
+- **PDF download** — generates actual PDF files with embedded metadata (author, title, keywords), page breaks per network
 
 ### Multilingual
 
@@ -160,20 +162,20 @@ The Docker setup includes:
 
 ## Tech Stack
 
-| Layer      | Technology                                                                                                                        |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Framework  | [React 19](https://react.dev/) + [TypeScript 5.8](https://www.typescriptlang.org/)                                               |
-| Build      | [Vite 7](https://vite.dev/) + [SWC](https://swc.rs/)                                                                             |
-| Styling    | [Tailwind CSS 4](https://tailwindcss.com/)                                                                                        |
-| Components | [Radix UI](https://www.radix-ui.com/) primitives                                                                                  |
-| Icons      | [Lucide React](https://lucide.dev/)                                                                                               |
-| Database   | [Dexie.js](https://dexie.org/) (IndexedDB wrapper)                                                                                |
-| i18n       | [i18next](https://www.i18next.com/) with browser language detection                                                               |
-| QR Codes   | [qrcode.react](https://github.com/zpao/qrcode.react)                                                                             |
-| PDF        | [jsPDF](https://github.com/parallax/jsPDF) + [html2canvas-pro](https://github.com/nicolo-ribaudo/html2canvas-pro) (lazy-loaded)   |
-| PWA        | [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) + [Workbox](https://developer.chrome.com/docs/workbox/)                      |
-| Crypto     | [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) (PBKDF2 + AES-256-GCM)                         |
-| Server     | [Nginx Alpine](https://hub.docker.com/_/nginx) (Docker)                                                                           |
+| Layer | Technology |
+| --- | --- |
+| Framework | [React 19](https://react.dev/) + [TypeScript 5.8](https://www.typescriptlang.org/) |
+| Build | [Vite 8](https://vite.dev/) (Rolldown) + [SWC](https://swc.rs/) |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com/) |
+| Components | [Radix UI](https://www.radix-ui.com/) primitives |
+| Icons | [Lucide React](https://lucide.dev/) |
+| Database | [Dexie.js 4](https://dexie.org/) (IndexedDB wrapper) |
+| i18n | [i18next](https://www.i18next.com/) with browser language detection |
+| QR Codes | [qrcode.react](https://github.com/zpao/qrcode.react) |
+| PDF | [jsPDF](https://github.com/parallax/jsPDF) + [html2canvas-pro](https://github.com/nicolo-ribaudo/html2canvas-pro) (lazy-loaded) |
+| PWA | [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) + [Workbox](https://developer.chrome.com/docs/workbox/) |
+| Crypto | [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) (PBKDF2 + AES-256-GCM) |
+| Server | [Nginx Alpine](https://hub.docker.com/_/nginx) (Docker) |
 
 ---
 
@@ -208,16 +210,17 @@ public/
 
 ## Scripts
 
-| Command                  | Description                      |
-| ------------------------ | -------------------------------- |
-| `npm run dev`            | Start development server         |
-| `npm run build`          | Type-check and build for production |
-| `npm run preview`        | Preview production build         |
-| `npm run test`           | Run tests in watch mode          |
-| `npm run test:run`       | Run tests once                   |
-| `npm run type-check`     | TypeScript type checking         |
-| `npm run generate-icons` | Generate PWA icons from SVG      |
-| `npm run clean`          | Remove dist and Vite cache       |
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start development server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview production build |
+| `npm run test` | Run tests in watch mode |
+| `npm run test:run` | Run tests once |
+| `npm run test:coverage` | Run tests with coverage report |
+| `npm run type-check` | TypeScript type checking |
+| `npm run generate-icons` | Generate PWA icons from SVG |
+| `npm run clean` | Remove dist and Vite cache |
 
 ---
 
