@@ -14,6 +14,7 @@ import { ImportDialog } from '@/components/ImportDialog';
 import { SettingsPanel } from '@/components/SettingsPanel';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { PWAUpdatePrompt } from '@/components/PWAUpdatePrompt';
 import { getAllNetworks, addNetwork, updateNetwork, deleteNetwork } from '@/db';
 import { parseShareFragment } from '@/utils/share';
 import type { WifiNetwork } from '@/types';
@@ -382,6 +383,9 @@ export default function App() {
           onOpenChange={(open) => !open && setShareNetworks([])}
           networks={shareNetworks}
         />
+
+        {/* PWA update prompt */}
+        <PWAUpdatePrompt />
 
         {/* Import dialog */}
         {importData && (

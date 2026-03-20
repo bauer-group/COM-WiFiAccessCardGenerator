@@ -175,5 +175,9 @@
     "filterByTag": "Etikete göre filtrele",
     "printGroup": "Bu grubu yazdır",
     "shareGroup": "Bu grubu paylaş"
+  },
+  "pwa": {
+    "updateAvailable": "Yeni bir sürüm mevcut",
+    "reload": "Güncelle"
   }
 }

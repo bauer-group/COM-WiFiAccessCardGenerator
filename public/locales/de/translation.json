@@ -168,6 +168,10 @@
     "or": "oder",
     "optional": "optional"
   },
+  "pwa": {
+    "updateAvailable": "Eine neue Version ist verfügbar",
+    "reload": "Aktualisieren"
+  },
   "tags": {
     "title": "Tags",
     "all": "Alle",

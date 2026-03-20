@@ -175,5 +175,9 @@
     "filterByTag": "Lọc theo thẻ",
     "printGroup": "In nhóm này",
     "shareGroup": "Chia sẻ nhóm này"
+  },
+  "pwa": {
+    "updateAvailable": "Có phiên bản mới",
+    "reload": "Cập nhật"
   }
 }

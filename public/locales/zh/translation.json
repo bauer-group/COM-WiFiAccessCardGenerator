@@ -175,5 +175,9 @@
     "filterByTag": "按标签筛选",
     "printGroup": "打印此组",
     "shareGroup": "分享此组"
+  },
+  "pwa": {
+    "updateAvailable": "新版本可用",
+    "reload": "更新"
   }
 }

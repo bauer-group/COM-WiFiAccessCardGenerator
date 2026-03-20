@@ -175,5 +175,9 @@
     "filterByTag": "Filtrar por tag",
     "printGroup": "Imprimir este grupo",
     "shareGroup": "Partilhar este grupo"
+  },
+  "pwa": {
+    "updateAvailable": "Uma nova versão está disponível",
+    "reload": "Atualizar"
   }
 }
