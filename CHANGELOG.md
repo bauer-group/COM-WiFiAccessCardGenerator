@@ -1,3 +1,9 @@
+## [0.5.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.4.0...v0.5.0) (2026-03-20)
+
+### 🚀 Features
+
+* **pwa:** added update notification prompt ([6bd4534](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/6bd4534ec428fe5be81fa935d0437f6e85c196c8))
+
 ## [0.4.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.3.0...v0.4.0) (2026-03-20)
 
 ### 🚀 Features
