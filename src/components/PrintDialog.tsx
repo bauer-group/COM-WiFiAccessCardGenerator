@@ -139,57 +139,62 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
         import('jspdf'),
       ]);
 
-      // Render the preview to a high-res canvas
-      const canvas = await html2canvas(content, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#ffffff',
-        logging: false,
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-
       // A4 dimensions in mm
       const pdfWidth = 210;
       const pdfHeight = 297;
-      const ratio = pdfWidth / imgWidth;
-      const scaledHeight = imgHeight * ratio;
 
-      const pdf = new jsPDF({
-        orientation: scaledHeight > pdfHeight ? 'portrait' : 'portrait',
-        unit: 'mm',
-        format: 'a4',
-      });
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-      // If content fits on one page
-      if (scaledHeight <= pdfHeight) {
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, scaledHeight);
-      } else {
-        // Multi-page: slice the canvas into A4-sized pages
-        const pageCanvasHeight = pdfHeight / ratio;
-        let remainingHeight = imgHeight;
-        let srcY = 0;
-        let page = 0;
+      // Find all logical page elements (each network = one page)
+      // SheetLayout uses direct children with .print-break-before or first child
+      // Card/Sticker layouts use .print-avoid-break children
+      const pageElements = content.querySelectorAll(':scope > div > div');
+      const elements = pageElements.length > 1
+        ? Array.from(pageElements)
+        : [content]; // Fallback: render entire container as single page
 
-        while (remainingHeight > 0) {
-          if (page > 0) pdf.addPage();
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i] as HTMLElement;
+        if (i > 0) pdf.addPage();
 
-          const sliceHeight = Math.min(pageCanvasHeight, remainingHeight);
-          const pageCanvas = document.createElement('canvas');
-          pageCanvas.width = imgWidth;
-          pageCanvas.height = sliceHeight;
-          const ctx = pageCanvas.getContext('2d')!;
-          ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
+        const canvas = await html2canvas(el, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          logging: false,
+        });
 
-          const pageImgData = pageCanvas.toDataURL('image/png');
-          const pageScaledHeight = sliceHeight * ratio;
-          pdf.addImage(pageImgData, 'PNG', 0, 0, pdfWidth, pageScaledHeight);
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = pdfWidth / imgWidth;
+        const scaledHeight = imgHeight * ratio;
 
-          srcY += sliceHeight;
-          remainingHeight -= sliceHeight;
-          page++;
+        if (scaledHeight <= pdfHeight) {
+          // Fits on one page
+          pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, scaledHeight);
+        } else {
+          // Content taller than A4 — slice into multiple pages
+          const pageCanvasHeight = pdfHeight / ratio;
+          let remainingHeight = imgHeight;
+          let srcY = 0;
+          let slicePage = 0;
+
+          while (remainingHeight > 0) {
+            if (slicePage > 0) pdf.addPage();
+
+            const sliceHeight = Math.min(pageCanvasHeight, remainingHeight);
+            const pageCanvas = document.createElement('canvas');
+            pageCanvas.width = imgWidth;
+            pageCanvas.height = sliceHeight;
+            const ctx = pageCanvas.getContext('2d')!;
+            ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
+
+            pdf.addImage(pageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, sliceHeight * ratio);
+
+            srcY += sliceHeight;
+            remainingHeight -= sliceHeight;
+            slicePage++;
+          }
         }
       }
 
