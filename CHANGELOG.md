@@ -1,3 +1,9 @@
+## [0.6.1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.0...v0.6.1) (2026-03-20)
+
+### 🐛 Bug Fixes
+
+* **PrintDialog:** respect logical page elements in PDF rendering ([8d0dd69](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/8d0dd695be0ae4e61f772be868e944f54ecac834))
+
 ## [0.6.0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.5.1...v0.6.0) (2026-03-20)
 
 ### 🚀 Features
