@@ -145,57 +145,73 @@ export function PrintDialog({ open, onOpenChange, networks, defaultLanguage }: P
 
       const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-      // Find all logical page elements (each network = one page)
-      // SheetLayout uses direct children with .print-break-before or first child
-      // Card/Sticker layouts use .print-avoid-break children
-      const pageElements = content.querySelectorAll(':scope > div > div');
-      const elements = pageElements.length > 1
-        ? Array.from(pageElements)
-        : [content]; // Fallback: render entire container as single page
+      // Fix content to A4-proportional width (794px = 210mm at 96dpi)
+      // so all pages render identically regardless of dialog/viewport size
+      const A4_WIDTH_PX = 794;
+      const originalWidth = content.style.width;
+      const originalMinWidth = content.style.minWidth;
+      content.style.width = `${A4_WIDTH_PX}px`;
+      content.style.minWidth = `${A4_WIDTH_PX}px`;
 
-      for (let i = 0; i < elements.length; i++) {
-        const el = elements[i] as HTMLElement;
-        if (i > 0) pdf.addPage();
+      // Force layout reflow before capturing
+      content.getBoundingClientRect();
 
-        const canvas = await html2canvas(el, {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#ffffff',
-          logging: false,
-        });
+      try {
+        // Find all logical page elements (each network = one page)
+        const pageElements = content.querySelectorAll(':scope > div > div');
+        const elements = pageElements.length > 1
+          ? Array.from(pageElements)
+          : [content]; // Fallback: render entire container as single page
 
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = pdfWidth / imgWidth;
-        const scaledHeight = imgHeight * ratio;
+        for (let i = 0; i < elements.length; i++) {
+          const el = elements[i] as HTMLElement;
+          if (i > 0) pdf.addPage();
 
-        if (scaledHeight <= pdfHeight) {
-          // Fits on one page
-          pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, scaledHeight);
-        } else {
-          // Content taller than A4 — slice into multiple pages
-          const pageCanvasHeight = pdfHeight / ratio;
-          let remainingHeight = imgHeight;
-          let srcY = 0;
-          let slicePage = 0;
+          const canvas = await html2canvas(el, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            logging: false,
+            width: A4_WIDTH_PX,
+          });
 
-          while (remainingHeight > 0) {
-            if (slicePage > 0) pdf.addPage();
+          const imgWidth = canvas.width;
+          const imgHeight = canvas.height;
+          const ratio = pdfWidth / imgWidth;
+          const scaledHeight = imgHeight * ratio;
 
-            const sliceHeight = Math.min(pageCanvasHeight, remainingHeight);
-            const pageCanvas = document.createElement('canvas');
-            pageCanvas.width = imgWidth;
-            pageCanvas.height = sliceHeight;
-            const ctx = pageCanvas.getContext('2d')!;
-            ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
+          if (scaledHeight <= pdfHeight) {
+            // Fits on one page
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, scaledHeight);
+          } else {
+            // Content taller than A4 — slice into multiple pages
+            const pageCanvasHeight = pdfHeight / ratio;
+            let remainingHeight = imgHeight;
+            let srcY = 0;
+            let slicePage = 0;
 
-            pdf.addImage(pageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, sliceHeight * ratio);
+            while (remainingHeight > 0) {
+              if (slicePage > 0) pdf.addPage();
 
-            srcY += sliceHeight;
-            remainingHeight -= sliceHeight;
-            slicePage++;
+              const sliceHeight = Math.min(pageCanvasHeight, remainingHeight);
+              const pageCanvas = document.createElement('canvas');
+              pageCanvas.width = imgWidth;
+              pageCanvas.height = sliceHeight;
+              const ctx = pageCanvas.getContext('2d')!;
+              ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
+
+              pdf.addImage(pageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, sliceHeight * ratio);
+
+              srcY += sliceHeight;
+              remainingHeight -= sliceHeight;
+              slicePage++;
+            }
           }
         }
+      } finally {
+        // Restore original sizing
+        content.style.width = originalWidth;
+        content.style.minWidth = originalMinWidth;
       }
 
       // PDF metadata
