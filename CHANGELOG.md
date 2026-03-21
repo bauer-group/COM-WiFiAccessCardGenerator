@@ -1,3 +1,9 @@
+## [0.6.2](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.1...v0.6.2) (2026-03-21)
+
+### 🐛 Bug Fixes
+
+* **PrintDialog:** fixed PDF rendering consistency ([8ca5c75](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/8ca5c75bb4f15b79ae3b713ba54e9f0c09a69ac3))
+
 ## [0.6.1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.0...v0.6.1) (2026-03-20)
 
 ### 🐛 Bug Fixes
