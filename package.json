@@ -18,7 +18,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dexie": "^4.2.0",
+    "dexie": "^4.4.2",
     "dexie-react-hooks": "^4.2.0",
     "html2canvas-pro": "^2.0.2",
     "i18next": "^25.8.0",
