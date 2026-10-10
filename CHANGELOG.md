@@ -1,3 +1,22 @@
+# Changelog
+
+All notable changes to this project are documented here. This file is maintained
+automatically by [semantic-release](https://github.com/semantic-release/semantic-release)
+on every release to `main`.
+
+## [0.6.3](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.2...v0.6.3) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **ci:** granted scopes the called modules need ([a7432e7](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/a7432e7a97e652deac3522ffb4d18e8a8577a57f))
+* **deps:** updated vulnerable dependencies to patched versions ([dfb3fd0](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/dfb3fd075e12817c99d3ca7aaf3b2c775521cbd9))
+
+### 🔧 Maintenance
+
+* **ci:** removed issue AI summary workflow ([94a3f42](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/94a3f42b8d5143ac6c2664835222be57b7154986)), references [bauer-group/automation-templates#105](https://github.com/bauer-group/automation-templates/issues/105)
+* **ci:** removed redundant teams notification ([dd3f8d7](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/dd3f8d7c315f96d238a5176427839fecfc657360))
+* **codeowners:** reassigned ownership to core team [skip ci] ([7ead5f3](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/7ead5f3b6693d1081edf26c56959b6e58237502c))
+
 ## [0.6.2](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.1...v0.6.2) (2026-03-21)
 
 ### 🐛 Bug Fixes
