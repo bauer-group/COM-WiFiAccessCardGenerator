@@ -4,6 +4,12 @@ All notable changes to this project are documented here. This file is maintained
 automatically by [semantic-release](https://github.com/semantic-release/semantic-release)
 on every release to `main`.
 
+## [0.6.4](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.3...v0.6.4) (2026-10-11)
+
+### 🐛 Bug Fixes
+
+* **deps:** updated i18next-http-backend to 4.0.2 ([7b2172d](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/7b2172d803b5a7a5d689b5f97d798aee7001edb9))
+
 ## [0.6.3](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.2...v0.6.3) (2026-10-10)
 
 ### 🐛 Bug Fixes
