@@ -4,6 +4,16 @@ All notable changes to this project are documented here. This file is maintained
 automatically by [semantic-release](https://github.com/semantic-release/semantic-release)
 on every release to `main`.
 
+## [0.6.6](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.5...v0.6.6) (2026-11-24)
+
+### 🐛 Bug Fixes
+
+* **i18n:** removed showSupportNotice option dropped in i18next 26 ([6ebda75](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/6ebda75cdb80e46113d081734dea204e36ab9152))
+
+### 🔧 Maintenance
+
+* **deps:** bump the i18next group across 1 directory with 2 updates ([4fc8a02](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/4fc8a0249f280cab5ad2b0e745622db7a3b21685))
+
 ## [0.6.5](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.4...v0.6.5) (2026-11-24)
 
 ### 🐛 Bug Fixes
