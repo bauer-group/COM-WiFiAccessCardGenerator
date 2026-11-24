@@ -4,6 +4,34 @@ All notable changes to this project are documented here. This file is maintained
 automatically by [semantic-release](https://github.com/semantic-release/semantic-release)
 on every release to `main`.
 
+## [0.6.5](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.4...v0.6.5) (2026-11-24)
+
+### 🐛 Bug Fixes
+
+* **settings:** replaced lucide Github icon with local component ([06a717d](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/06a717d2f0de9638b0a7e3d26f57e83f5395e03c)), references [#89](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/issues/89)
+
+### 🔧 Maintenance
+
+* **deps:** bump @testing-library/jest-dom from 6.9.1 to 8.0.0 ([dba3542](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/dba35426e70ff323e5cc17d87efe3af1c4b94680))
+* **deps:** bump dexie from 4.3.0 to 4.4.7 ([ec6503e](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/ec6503ef8552c12eef923549d5f5aee973a401b2))
+* **deps:** bump dexie-react-hooks from 4.2.0 to 4.4.0 ([528d2ce](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/528d2ce0161fe5b179d0c1a4137ad0229a7c8599))
+* **deps:** bump dompurify from 3.4.16 to 3.4.17 ([86327be](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/86327be6c83f859daeb1f749511cbdd695a71abf))
+* **deps:** bump fast-uri from 3.1.8 to 3.1.9 ([a321639](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/a3216392fc881cee92b8bb49a82925ed072640f0))
+* **deps:** bump html2canvas-pro from 2.0.2 to 2.6.4 ([e0de2dc](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/e0de2dc2df94641cb019017c23877b7be8d3f43f))
+* **deps:** bump i18next-browser-languagedetector from 8.2.1 to 8.3.1 ([fad8ac4](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/fad8ac4b8b90f0c84ab133a67459c31e90e2da7d))
+* **deps:** bump i18next-http-backend from 4.0.2 to 4.0.4 ([5a91636](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/5a916365bf3cd7f57161950c36ab83145188b0df))
+* **deps:** bump i18next-http-backend from 4.0.4 to 4.1.0 ([b3d76e9](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/b3d76e9d538769fbe0d35008bdde411209a793cb))
+* **deps:** bump jsdom from 29.0.0 to 31.0.1 ([1bdd92f](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/1bdd92f4f5b6f77e03d2758f832151ab875156b4))
+* **deps:** bump serialize-javascript from 7.1.2 to 7.1.4 ([4931078](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/49310780f14ccd58fcd1b874935d9db1b3b8a834))
+* **deps:** bump tailwind-merge ([0934f0c](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/0934f0cb8584b395733afb005f3347ee6c880c39))
+* **deps:** bump tailwind-merge from 3.5.0 to 3.7.0 ([1728bb1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/1728bb1f0fc8df36eb1c31d1ce7fa36d75b0b2ee))
+* **deps:** bump the dev-dependencies group across 1 directory with 17 updates ([0968ace](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/0968aceddbb9e2a1d5893d904d902599dc5263c9))
+* **deps:** bump the react group across 1 directory with 4 updates ([2b9477c](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/2b9477cb93e2f5374ec0fd131eea601435f29c80))
+* **deps:** bump undici from 7.30.0 to 7.30.1 ([e571887](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/e57188747671910f6233a74ad1d6d995d2001bcd))
+* **deps:** bump vite from 8.0.16 to 8.3.5 ([d241ad1](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/d241ad1bd35d30e0b45ccae765b2347b98c67620))
+* **deps:** bump vite-plugin-pwa from 1.2.0 to 2.0.0 ([dc5e7db](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/dc5e7dbf01c8497d5307bf53a5511d40dbd150ee))
+* **deps:** bump vitest from 4.1.11 to 5.1.1 ([d565928](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/commit/d56592853a7e9685f6ee96ae20c7c1aca76c7fa9))
+
 ## [0.6.4](https://github.com/bauer-group/COM-WiFiAccessCardGenerator/compare/v0.6.3...v0.6.4) (2026-10-11)
 
 ### 🐛 Bug Fixes
