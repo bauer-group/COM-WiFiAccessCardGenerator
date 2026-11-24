@@ -26,10 +26,24 @@ updates:
       - "dependabot"
     commit-message:
       prefix: "chore(deps)"
-    # Group minor/patch updates to reduce PR noise.
-    # Lock-step groups come first: Dependabot assigns a dependency to the
-    # first group it matches, and these must also move together on majors.
+    # Groups split by update type, so they never overlap:
+    # - npm-minor-and-patch: every minor and patch update in one PR per
+    #   run, merged by dependabot-maintenance.yml once ci.yml passed.
+    #   0.x packages are excluded and keep their own PRs: a 0.y minor
+    #   counts as major for the auto-merge gate and would hold the whole
+    #   group open.
+    # - react, i18next (update-types major):
+    #   majors of these packages stay in one PR per group, open for review.
     groups:
+      npm-minor-and-patch:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "class-variance-authority"
+          - "sharp"
+        update-types:
+          - "minor"
+          - "patch"
       # react-dom throws "Incompatible React versions" at load time unless
       # react and react-dom have the exact same version.
       react:
@@ -38,6 +52,8 @@ updates:
           - "react-dom"
           - "@types/react"
           - "@types/react-dom"
+        update-types:
+          - "major"
       # react-i18next majors carry a hard peer floor on i18next
       # (17.x requires i18next >= 26.2.0).
       i18next:
@@ -45,15 +61,8 @@ updates:
           - "i18next"
           - "i18next-*"
           - "react-i18next"
-      dev-dependencies:
-        dependency-type: "development"
         update-types:
-          - "minor"
-          - "patch"
-      production-dependencies:
-        dependency-type: "production"
-        update-types:
-          - "patch"
+          - "major"
     # Limit open PRs to avoid overwhelming
     open-pull-requests-limit: 25
     # Auto-merge patch updates (requires GitHub Actions workflow)
