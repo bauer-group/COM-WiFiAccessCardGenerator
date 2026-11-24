@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Trash2, Download, Upload, AlertCircle, Wifi, Github, Shield, Globe, QrCode } from 'lucide-react';
+import { Trash2, Download, Upload, AlertCircle, Wifi, Shield, Globe, QrCode } from 'lucide-react';
+import { Github } from '@/components/icons/Github';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
